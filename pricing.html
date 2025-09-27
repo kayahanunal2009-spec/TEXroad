@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donation - TEXroad</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #b3e5fc, #81d4fa);
+      color: #0d47a1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px 20px 20px;
+    }
+
+    header h1 {
+      font-size: 4rem;
+      margin: 0;
+      font-weight: bold;
+      background: linear-gradient(90deg, #0288d1, #00b0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p {
+      font-size: 1.5rem;
+      margin-top: 10px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .donation-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin: 40px 20px;
+      z-index: 1;
+    }
+
+    .donation {
+      background-color: rgba(255,255,255,0.9);
+      border-radius: 20px;
+      padding: 30px 25px;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .donation:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    }
+
+    .donation h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #0288d1;
+    }
+
+    .donation p.amount {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 15px 0;
+      color: #0d47a1;
+    }
+
+    .donation ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+
+    .donation ul li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .donation button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      background-color: #0288d1;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .donation button:hover {
+      background-color: #00b0ff;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: rgba(0,0,50,0.6);
+    }
+
+    @media (max-width: 900px) {
+      .donation-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Donation Options</h1>
+    <p>Support TEXroad to transform textile waste into sustainable urban roads, bike lanes, and walking paths.</p>
+  </header>
+
+  <div class="donation-container">
+    <div class="donation">
+      <h2>Supporter</h2>
+      <p class="amount">$20</p>
+      <ul>
+        <li>Receive project updates</li>
+        <li>Quarterly newsletter</li>
+      </ul>
+      <button>Donate</button>
+    </div>
+
+    <div class="donation">
+      <h2>Contributor</h2>
+      <p class="amount">$50</p>
+      <ul>
+        <li>Supporter perks</li>
+        <li>Monthly project news</li>
+        <li>VIP updates on new paths</li>
+      </ul>
+      <button>Donate</button>
+    </div>
+
+    <div class="donation">
+      <h2>Partner</h2>
+      <p class="amount">$100</p>
+      <ul>
+        <li>Contributor perks</li>
+        <li>Access to VIP project insights</li>
+        <li>Invitation to annual project review</li>
+        <li>Early notice of new path implementations</li>
+      </ul>
+      <button>Donate</button>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 TEXroad Project
+  </footer>
+
+</body>
+</html>

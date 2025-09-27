@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - TEXroad</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #b3e5fc, #81d4fa);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      margin: 50px 20px 20px 20px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #0288d1, #00b0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background-color: rgba(255,255,255,0.9);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    input {
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 1px solid #0288d1;
+    }
+
+    button {
+      padding: 12px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      background-color: #0288d1;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00b0ff;
+      transform: translateY(-2px);
+    }
+
+    .message {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #2e3a7d;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .message.show {
+      display: block;
+      opacity: 1;
+    }
+
+    .return-button {
+      margin-top: 20px;
+      padding: 10px 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      background-color: #2e3a7d;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .return-button:hover {
+      background-color: #43a047;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: rgba(0,0,50,0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Sign Up for TEXroad</h1>
+    <p>Join our project updates and VIP access!</p>
+  </header>
+
+  <form id="signupForm">
+    <input type="text" placeholder="Full Name" required>
+    <input type="email" placeholder="Email Address" required>
+    <input type="password" placeholder="Password" required>
+    <button type="submit">Sign Up</button>
+  </form>
+
+  <div class="message" id="successMessage">Signed Up!</div>
+  <button class="return-button" id="returnHome" style="display:none;" onclick="window.location.href='index.html'">Return to Home</button>
+
+  <footer>
+    &copy; 2025 TEXroad Project
+  </footer>
+
+  <script>
+    const form = document.getElementById('signupForm');
+    const message = document.getElementById('successMessage');
+    const returnButton = document.getElementById('returnHome');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Formun normal submitini engelle
+      form.style.display = 'none'; // Formu gizle
+
+      // Mesajı animasyonlu göster
+      message.classList.add('show');
+
+      // Return buttonu göster
+      returnButton.style.display = 'inline-block';
+    });
+  </script>
+
+</body>
+</html>

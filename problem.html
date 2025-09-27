@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Problem - TEXroad</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: #e0f7fa;
+      overflow-x: hidden;
+      min-height: 200vh;
+      position: relative;
+    }
+
+    /* Hafif dalgalı arka plan */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.1),
+        rgba(255,255,255,0.1) 2px,
+        transparent 2px,
+        transparent 6px
+      );
+      animation: moveTexture 30s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes moveTexture {
+      0% { transform: translate(0,0) rotate(0deg); }
+      100% { transform: translate(-50px,50px) rotate(360deg); }
+    }
+
+    header.hero {
+      position: relative;
+      height: 25vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+      padding-top: 30px;
+      z-index: 1;
+    }
+
+    header.hero h1 {
+      font-size: 4rem;
+      margin: 0;
+      font-weight: bold;
+      background: linear-gradient(90deg, #00796b, #00bfa5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    }
+
+    header.hero p {
+      font-size: 1.3rem;
+      margin-top: 10px;
+      max-width: 800px;
+      background: linear-gradient(90deg, #00796b, #00bfa5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+    }
+
+    section.content {
+      max-width: 1000px;
+      margin: 20px auto 60px auto; /* Altta araba için yeterli boşluk */
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .card {
+      background-color: rgba(255,255,255,0.95);
+      border-radius: 20px;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+      padding: 40px;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #00796b, #00bfa5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.15);
+    }
+
+    .card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #004d40;
+    }
+
+    /* Yol ve araba - artık 4. kutunun altında normal akışta */
+    .road-container {
+      width: 80%;
+      height: 120px;
+      margin: 40px auto 80px auto; /* 4. kutu altında */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .road {
+      width: 100%;
+      height: 50px;
+      background: linear-gradient(to bottom, #555 0%, #777 100%);
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px 2px black;
+    }
+
+    .car {
+      width: 80px;
+      height: 40px;
+      background: linear-gradient(to bottom, #ff7043 0%, #f4511e 100%);
+      border-radius: 10px;
+      position: absolute;
+      top: -35px;
+      left: 0;
+      cursor: pointer;
+      transition: left 3s ease-in-out;
+    }
+
+    .window {
+      position: absolute;
+      top: 4px;
+      left: 15px;
+      width: 50px;
+      height: 16px;
+      background: #90caf9;
+      border-radius: 3px;
+    }
+
+    .wheel {
+      width: 14px;
+      height: 14px;
+      background: #222;
+      border-radius: 50%;
+      position: absolute;
+      bottom: -7px;
+      border: 2px solid #444;
+    }
+
+    .wheel.left { left: 8px; }
+    .wheel.right { right: 8px; }
+
+    .headlight-left, .headlight-right {
+      width: 6px;
+      height: 6px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 10px;
+      box-shadow: 0 0 12px yellow;
+    }
+    .headlight-left { left: -3px; }
+    .headlight-right { right: -3px; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: rgba(0,0,50,0.6);
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <h1>Textile Waste Challenge</h1>
+    <p>Understanding the environmental impact of textile waste.</p>
+  </header>
+
+  <section class="content">
+    <div class="card">
+      <h2>Environmental Pollution</h2>
+      <p>Textile waste is a major contributor to environmental pollution. Large amounts of discarded clothes end up in landfills, where they release harmful chemicals and dyes into the soil and water. Non-biodegradable fabrics, such as polyester, can take hundreds of years to decompose, causing long-term damage to ecosystems.</p>
+    </div>
+
+    <div class="card">
+      <h2>Resource Wastage</h2>
+      <p>The production of textiles consumes enormous amounts of water, energy, and raw materials. When clothing is thrown away after minimal use, all these resources are wasted. Recycling or reusing textiles can help conserve water, reduce energy consumption, and minimize the need for new raw materials.</p>
+    </div>
+
+    <div class="card">
+      <h2>Health Risks</h2>
+      <p>Textile waste can pose serious health risks to humans and animals. Chemicals used in dyes and treatments can leak into the environment, contaminating water supplies. Additionally, decomposing textiles can create breeding grounds for pests and bacteria, affecting nearby communities.</p>
+    </div>
+
+    <div class="card">
+      <h2>Urban Management Challenges</h2>
+      <p>Managing large amounts of textile waste is a significant challenge for cities. Landfills quickly fill up, and waste collection becomes more costly and complicated. Without proper recycling strategies, urban areas struggle with overflowing dumps and increased environmental hazards.</p>
+    </div>
+
+    <!-- Araba ve yol 4. kutunun hemen altında -->
+    <div class="road-container">
+      <div class="road">ROAD TO SOLUTION</div>
+      <div class="car" id="car" onclick="moveCar()">
+        <div class="window"></div>
+        <div class="wheel left"></div>
+        <div class="wheel right"></div>
+        <div class="headlight-left"></div>
+        <div class="headlight-right"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 TEXroad Project
+  </footer>
+
+  <script>
+    function moveCar() {
+      const car = document.getElementById('car');
+      car.style.left = '90%';
+      setTimeout(() => {
+        window.open('solution.html','_blank');
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
